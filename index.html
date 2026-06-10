@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicios A1: Artículos</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        .question { margin-bottom: 20px; padding: 15px; border: 1px solid #ccc; border-radius: 8px; }
+        input { padding: 5px; margin-right: 10px; }
+        .correct { border: 2px solid green; background-color: #e8f5e9; }
+        .incorrect { border: 2px solid red; background-color: #ffebee; }
+    </style>
+</head>
+<body>
+    <h1>Ejercicios de Artículos (A1)</h1>
+
+    <div class="question">
+        <p>1. _____ casa. (Cualquier casa)</p>
+        <input type="text" id="q1" oninput="check(this, 'un')" placeholder="Un/Una/El/La">
+    </div>
+
+    <div class="question">
+        <p>2. _____ casa de mi amigo. (La casa específica)</p>
+        <input type="text" id="q2" oninput="check(this, 'la')" placeholder="Un/Una/El/La">
+    </div>
+
+    <div class="question">
+        <p>3. _____ perro. (Cualquier perro)</p>
+        <input type="text" id="q3" oninput="check(this, 'un')" placeholder="Un/Una/El/La">
+    </div>
+
+    <div class="question">
+        <p>4. _____ perro de Luis. (El perro específico)</p>
+        <input type="text" id="q4" oninput="check(this, 'el')" placeholder="Un/Una/El/La">
+    </div>
+
+    <script>
+        function check(element, answer) {
+            if (element.value.toLowerCase().trim() === answer) {
+                element.className = 'correct';
+            } else if (element.value.length > 0) {
+                element.className = 'incorrect';
+            } else {
+                element.className = '';
+            }
+        }
+    </script>
+</body>
+</html>
