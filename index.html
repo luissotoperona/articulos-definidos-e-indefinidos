@@ -2,68 +2,68 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Ejercicios A1: Artículos</title>
+    <title>Ejercicio: Artículos A1</title>
     <style>
         body { font-family: sans-serif; padding: 20px; line-height: 1.6; max-width: 600px; margin: auto; }
         .question { margin-bottom: 20px; padding: 15px; border: 1px solid #ccc; border-radius: 8px; }
         input { padding: 8px; font-size: 16px; width: 100px; }
+        button { padding: 10px 20px; font-size: 16px; background-color: #008080; color: white; border: none; border-radius: 5px; cursor: pointer; }
         .correct { border: 3px solid green; background-color: #e8f5e9; }
         .incorrect { border: 3px solid red; background-color: #ffebee; }
     </style>
 </head>
 <body>
     <h1>Ejercicios de Artículos (A1)</h1>
+    <p>Completa las frases y haz clic en "Finalizar" para revisar.</p>
 
-    <div class="question">
+    <div class="question" id="q1">
         <p>1. _____ casa. (Cualquier casa)</p>
-        <input type="text" oninput="check(this, ['una'])" placeholder="Escribe...">
+        <input type="text" data-ans="una">
     </div>
-
-    <div class="question">
+    <div class="question" id="q2">
         <p>2. _____ perro. (Cualquier perro)</p>
-        <input type="text" oninput="check(this, ['un'])" placeholder="Escribe...">
+        <input type="text" data-ans="un">
     </div>
-
-    <div class="question">
+    <div class="question" id="q3">
         <p>3. _____ libro. (Cualquier libro)</p>
-        <input type="text" oninput="this.value.toLowerCase().trim() === 'un' ? this.className='correct' : this.className='incorrect'; if(this.value.length === 0) this.className=''" placeholder="Escribe...">
+        <input type="text" data-ans="un">
     </div>
-
-    <div class="question">
+    <div class="question" id="q4">
         <p>4. _____ manzana. (Cualquier manzana)</p>
-        <input type="text" oninput="this.value.toLowerCase().trim() === 'una' ? this.className='correct' : this.className='incorrect'; if(this.value.length === 0) this.className=''" placeholder="Escribe...">
+        <input type="text" data-ans="una">
     </div>
-
-    <div class="question">
+    <div class="question" id="q5">
         <p>5. _____ casa de mi amigo. (Específico)</p>
-        <input type="text" oninput="this.value.toLowerCase().trim() === 'la' ? this.className='correct' : this.className='incorrect'; if(this.value.length === 0) this.className=''" placeholder="Escribe...">
+        <input type="text" data-ans="la">
     </div>
-
-    <div class="question">
+    <div class="question" id="q6">
         <p>6. _____ perro de Luis. (Específico)</p>
-        <input type="text" oninput="this.value.toLowerCase().trim() === 'el' ? this.className='correct' : this.className='incorrect'; if(this.value.length === 0) this.className=''" placeholder="Escribe...">
+        <input type="text" data-ans="el">
     </div>
-
-    <div class="question">
+    <div class="question" id="q7">
         <p>7. _____ libro de español. (Específico)</p>
-        <input type="text" oninput="this.value.toLowerCase().trim() === 'el' ? this.className='correct' : this.className='incorrect'; if(this.value.length === 0) this.className=''" placeholder="Escribe...">
+        <input type="text" data-ans="el">
+    </div>
+    <div class="question" id="q8">
+        <p>8. _____ manzana de la mesa. (Específico)</p>
+        <input type="text" data-ans="la">
     </div>
 
-    <div class="question">
-        <p>8. _____ manzana de la mesa. (Específico)</p>
-        <input type="text" oninput="this.value.toLowerCase().trim() === 'la' ? this.className='correct' : this.className='incorrect'; if(this.value.length === 0) this.className=''" placeholder="Escribe...">
-    </div>
+    <button onclick="finalizar()">Finalizar</button>
 
     <script>
-        function check(element, answers) {
-            const val = element.value.toLowerCase().trim();
-            if (answers.includes(val)) {
-                element.className = 'correct';
-            } else if (val.length > 0) {
-                element.className = 'incorrect';
-            } else {
-                element.className = '';
-            }
+        function finalizar() {
+            const inputs = document.querySelectorAll('input');
+            inputs.forEach(input => {
+                const respuestaUsuario = input.value.toLowerCase().trim();
+                const respuestaCorrecta = input.getAttribute('data-ans');
+                
+                if (respuestaUsuario === respuestaCorrecta) {
+                    input.className = 'correct';
+                } else {
+                    input.className = 'incorrect';
+                }
+            });
         }
     </script>
 </body>
