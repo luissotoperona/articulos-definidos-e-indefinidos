@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <title>Ejercicios A1: Artículos</title>
     <style>
-        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; max-width: 600px; margin: auto; }
         .question { margin-bottom: 20px; padding: 15px; border: 1px solid #ccc; border-radius: 8px; }
-        input { padding: 5px; margin-right: 10px; }
-        .correct { border: 2px solid green; background-color: #e8f5e9; }
-        .incorrect { border: 2px solid red; background-color: #ffebee; }
+        input { padding: 8px; font-size: 16px; width: 100px; }
+        .correct { border: 3px solid green; background-color: #e8f5e9; }
+        .incorrect { border: 3px solid red; background-color: #ffebee; }
     </style>
 </head>
 <body>
@@ -16,29 +16,50 @@
 
     <div class="question">
         <p>1. _____ casa. (Cualquier casa)</p>
-        <input type="text" id="q1" oninput="check(this, 'un')" placeholder="Un/Una/El/La">
+        <input type="text" oninput="check(this, ['una'])" placeholder="Escribe...">
     </div>
 
     <div class="question">
-        <p>2. _____ casa de mi amigo. (La casa específica)</p>
-        <input type="text" id="q2" oninput="check(this, 'la')" placeholder="Un/Una/El/La">
+        <p>2. _____ perro. (Cualquier perro)</p>
+        <input type="text" oninput="check(this, ['un'])" placeholder="Escribe...">
     </div>
 
     <div class="question">
-        <p>3. _____ perro. (Cualquier perro)</p>
-        <input type="text" id="q3" oninput="check(this, 'un')" placeholder="Un/Una/El/La">
+        <p>3. _____ libro. (Cualquier libro)</p>
+        <input type="text" oninput="this.value.toLowerCase().trim() === 'un' ? this.className='correct' : this.className='incorrect'; if(this.value.length === 0) this.className=''" placeholder="Escribe...">
     </div>
 
     <div class="question">
-        <p>4. _____ perro de Luis. (El perro específico)</p>
-        <input type="text" id="q4" oninput="check(this, 'el')" placeholder="Un/Una/El/La">
+        <p>4. _____ manzana. (Cualquier manzana)</p>
+        <input type="text" oninput="this.value.toLowerCase().trim() === 'una' ? this.className='correct' : this.className='incorrect'; if(this.value.length === 0) this.className=''" placeholder="Escribe...">
+    </div>
+
+    <div class="question">
+        <p>5. _____ casa de mi amigo. (Específico)</p>
+        <input type="text" oninput="this.value.toLowerCase().trim() === 'la' ? this.className='correct' : this.className='incorrect'; if(this.value.length === 0) this.className=''" placeholder="Escribe...">
+    </div>
+
+    <div class="question">
+        <p>6. _____ perro de Luis. (Específico)</p>
+        <input type="text" oninput="this.value.toLowerCase().trim() === 'el' ? this.className='correct' : this.className='incorrect'; if(this.value.length === 0) this.className=''" placeholder="Escribe...">
+    </div>
+
+    <div class="question">
+        <p>7. _____ libro de español. (Específico)</p>
+        <input type="text" oninput="this.value.toLowerCase().trim() === 'el' ? this.className='correct' : this.className='incorrect'; if(this.value.length === 0) this.className=''" placeholder="Escribe...">
+    </div>
+
+    <div class="question">
+        <p>8. _____ manzana de la mesa. (Específico)</p>
+        <input type="text" oninput="this.value.toLowerCase().trim() === 'la' ? this.className='correct' : this.className='incorrect'; if(this.value.length === 0) this.className=''" placeholder="Escribe...">
     </div>
 
     <script>
-        function check(element, answer) {
-            if (element.value.toLowerCase().trim() === answer) {
+        function check(element, answers) {
+            const val = element.value.toLowerCase().trim();
+            if (answers.includes(val)) {
                 element.className = 'correct';
-            } else if (element.value.length > 0) {
+            } else if (val.length > 0) {
                 element.className = 'incorrect';
             } else {
                 element.className = '';
